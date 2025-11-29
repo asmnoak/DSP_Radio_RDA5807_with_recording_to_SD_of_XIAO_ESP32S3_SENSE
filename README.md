@@ -72,7 +72,7 @@ XIAO ESP32S3 SENSEのGPIOは全て使用されていて、空きがない。<br>
 <p><strong>ブラウザの画面</strong><br>
 </p>
 <p>
-１．ブラウザから「http://192.168.x.y」（x.yは起動時、OLEDに表示）にアクセスする。DSPラジオの操作と週間スケジュールの設定画面を表示する。<br>
+１．ブラウザから「http://192.168.x.y」&nbsp;（x.yは起動時、OLEDに表示）<br>にアクセスする。DSPラジオの操作と週間スケジュールの設定画面を表示する。<br>
 「Recording_Function」ボタンを押す。<br>
 <img src="./xiao_esp32s3_sense_sd_2.png" width="660" height="360"><br>
 </p>
