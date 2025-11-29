@@ -14,7 +14,7 @@ SDカードに書き込むことが可能である。<br>
 操作には、Webブラウザを使用する。<br>開発はArduino IDE 2.1で行った。<br>
 使用したRDA5807用のライブラリは、<a href="https://github.com/pu2clr/RDA5807">こちら（pu2clr at GitHub）</a>にある。<br>
 なお、Arduino IDEのライブラリ管理からもインストール可能である。<br>
-DAC用のI2SのライブラリaudioI2Sは、<a href="https://github.com/schreibfaul1/ESP32-audioI2S  ">こちら（GitHub）</a>を利用している。
+DAC用のI2SのライブラリaudioI2Sは、<a href="https://github.com/schreibfaul1/ESP32-audioI2S  ">こちら（GitHub）</a>(3.0.12のこと、3.1以降は不可)を利用している。
 </p>
 <p><strong>機能</strong><br>
  ・ベースは<a href="https://github.com/asmnoak/RDA5807_radio_ESP32C3_with_weekly_Schedule">週間スケジュールを設定できるFM DSPラジオ</a>。<br>
