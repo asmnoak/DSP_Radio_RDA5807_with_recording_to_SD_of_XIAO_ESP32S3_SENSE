@@ -1,100 +1,100 @@
-<p><H3>DSP Radio(RDA5807) with recording function to SD card using XIAO ESP32S3 SENSE</H3></p>
+<p><H3>DSP Radio(RDA5807) with recording function to SD card using XIAO ESP32S3 SENSE(experimental)</H3></p>
 <p>
-FM DSP���W�I(RDA5807)�ɑ΂��A����𐧌䂷��<a href="https://www.switch-science.com/products/8969">Seeed Studio XIAO ESP32S3 SENSE</a>��
-SD�J�[�h�ɘ^������@�\��t�������̂ŏЉ��B<br>
-DSP���W�I��RDA5807FP�𗘗p���Ă���i<a href="https://www.aitendo.com/product/4797">�f�[�^�V�[�g�̎Q�ƃ����N����</a>�j�B<br>
-RDA5807FP�ɂ́AI2S�o�͋@�\������AXIAO ESP32S3 SENSE��I2S�|�[�g�Ŏ�M���A�f�B�W�^�������AWAV�t�@�C���Ƃ���<br>
-SD�J�[�h�ɏ������ނ��Ƃ��\�ł���B<br>
-�܂��ADAC��PCM5102���W���[���𗘗p���ASD�J�[�h��WAV�t�@�C�����Đ����邱�Ƃ��\�ł���B
-�\���͎��̐}���Q�Ƃ̂��ƁB<br>
-�Ȃ��A���̐��ʂ͌o���ɂ��ƂÂ����̂ŁA�u�����I�iexperimental�j�v�ł���i�����ۏ؂�����̂ł͂Ȃ��j�B
+FM DSPラジオ(RDA5807)に対し、それを制御する<a href="https://www.switch-science.com/products/8969">Seeed Studio XIAO ESP32S3 SENSE</a>の
+SDカードに録音する機能を付加したので紹介する。<br>
+DSPラジオはRDA5807FPを利用している（<a href="https://www.aitendo.com/product/4797">データシートの参照リンクあり</a>）。<br>
+RDA5807FPには、I2S出力機能があり、XIAO ESP32S3 SENSEのI2Sポートで受信し、ディジタル化し、WAVファイルとして<br>
+SDカードに書き込むことが可能である。<br>
+また、DACにPCM5102モジュールを利用し、SDカードのWAVファイルを再生することも可能である。
+構成は次の図を参照のこと。<br>
+なお、この成果は経験にもとづくもので、「実験的（experimental）」である（動作を保証するものではない）。
 </P>
 <p><img src="./ESP32S3_RDA5807_PCM5102.jpg" width="860" height="560"><br>
 </p>
-����ɂ́AWeb�u���E�U���g�p����B<br>�J����Arduino IDE 2.1�ōs�����B<br>
-�g�p����RDA5807�p�̃��C�u�����́A<a href="https://github.com/pu2clr/RDA5807">������ipu2clr at GitHub�j</a>�ɂ���B<br>
-�Ȃ��AArduino IDE�̃��C�u�����Ǘ�������C���X�g�[���\�ł���B<br>
-DAC�p��I2S�̃��C�u����audioI2S�́A<a href="https://github.com/schreibfaul1/ESP32-audioI2S  ">������iGitHub�j</a>�𗘗p���Ă���B
+操作には、Webブラウザを使用する。<br>開発はArduino IDE 2.1で行った。<br>
+使用したRDA5807用のライブラリは、<a href="https://github.com/pu2clr/RDA5807">こちら（pu2clr at GitHub）</a>にある。<br>
+なお、Arduino IDEのライブラリ管理からもインストール可能である。<br>
+DAC用のI2SのライブラリaudioI2Sは、<a href="https://github.com/schreibfaul1/ESP32-audioI2S  ">こちら（GitHub）</a>を利用している。
 </p>
-<p><strong>�@�\</strong><br>
- �E�x�[�X��<a href="https://github.com/asmnoak/RDA5807_radio_ESP32C3_with_weekly_Schedule">�T�ԃX�P�W���[����ݒ�ł���FM DSP���W�I</a>�B<br>
- �E�����WiFi�ڑ��̃u���E�U����s���B<br>
- �EFM DSP���W�I��I2S�o�́i32KBPS�j��SD�J�[�h�iWAV�t�@�C���j�ɘ^���ł���B<br>
- �E�^������WAV�t�@�C����DAC�iPCM5102�j���W���[���o�R�ōĐ��ł���B<br>
- �EFM���W�I��DAC�̏o�͂��A�i���O�X�C�b�`ADG884�Őؑւ��Ă���B<br>
- �EOLED�\�����u�ɁA���t�A�j���A�����A���ʁA���W�I��ON/OFF�A��M���g����\������B<br>
- �E�^�����T�ԃX�P�W���[���ɐݒ�ł���B�j�����ƂɁA�J�n���ԁA�����i���j�A���W�I�ǂ̔ԍ��A���ʁA�I����ON/OFF�Ɂu4�v���w�肷��B<br>
-�@�@��@13:00,1,59,1,4<br>
- �E�i���܂��̋@�\�jSD�J�[�h�Ɋi�[���ꂽMP3�t�@�C���̍Đ����\�B<br>
- �E�i���܂��̋@�\�j�t�@�C�����uinet_url.txt�v�ɃC���^�[�l�b�g���W�I�ǂ�URL���w��i1�s�̂݁j���Ă����ƃC���^�[�l�b�g���W�I�ǂɐڑ��ł���B<br>
- �E�o�͂̓I�[�f�B�I�W���b�N�o�R�ŏ����a�̃X�s�[�J�[�i�X�e���I�j��ڑ�����B<br>
+<p><strong>機能</strong><br>
+ ・ベースは<a href="https://github.com/asmnoak/RDA5807_radio_ESP32C3_with_weekly_Schedule">週間スケジュールを設定できるFM DSPラジオ</a>。<br>
+ ・操作はWiFi接続のブラウザから行う。<br>
+ ・FM DSPラジオのI2S出力（32KBPS）をSDカード（WAVファイル）に録音できる。<br>
+ ・録音したWAVファイルをDAC（PCM5102）モジュール経由で再生できる。<br>
+ ・FMラジオとDACの出力をアナログスイッチADG884で切替えている。<br>
+ ・OLED表示装置に、日付、曜日、時刻、音量、ラジオのON/OFF、受信周波数を表示する。<br>
+ ・録音を週間スケジュールに設定できる。曜日ごとに、開始時間、長さ（分）、ラジオ局の番号、音量、終了後ON/OFFに「4」を指定する。<br>
+　　例　13:00,1,59,1,4<br>
+ ・（おまけの機能）SDカードに格納されたMP3ファイルの再生が可能。<br>
+ ・（おまけの機能）ファイル名「inet_url.txt」にインターネットラジオ局のURLを指定（1行のみ）しておくとインターネットラジオ局に接続できる。<br>
+ ・出力はオーディオジャック経由で小口径のスピーカー（ステレオ）を接続する。<br>
 </p>
-<p><strong>H/W�\��</strong><br>
- �ESeeed Studio XIAO ESP32S3 SENSE - �R���g���[���ASD�h���C�u<br>
- �EI2C�ڑ�&nbsp; RDA5807FP<br>
- �EI2S�ڑ�&nbsp; PCM5102���W���[���@(UDA1334�ł���)<br>
- �EI2C�ڑ�&nbsp; SSD1306 64x32 OLED�\�����u<br>
- �E�o�͐ؑւ�&nbsp; ADG884 �A�i���O�X�C�b�`<br>
- �E�g�����W�X�^ S9014 (ADG884�̐؂�ւ��Ɏg�p�AON����2V�������鏬�M���p�Ȃ�OK)<br>
- �EXtal���U��i32768Hz�j�A�R���f���T�A��R�ށA�I�[�f�B�I�W���b�N�A�z����<br>
+<p><strong>H/W構成</strong><br>
+ ・Seeed Studio XIAO ESP32S3 SENSE - コントローラ、SDドライブ<br>
+ ・I2C接続&nbsp; RDA5807FP<br>
+ ・I2S接続&nbsp; PCM5102モジュール　(UDA1334でも可)<br>
+ ・I2C接続&nbsp; SSD1306 64x32 OLED表示装置<br>
+ ・出力切替え&nbsp; ADG884 アナログスイッチ<br>
+ ・トランジスタ S9014 (ADG884の切り替えに使用、ON時に2Vが得られる小信号用ならOK)<br>
+ ・Xtal発振器（32768Hz）、コンデンサ、抵抗類、オーディオジャック、配線類<br>
 </p>
 <p>
-<strong>��H�}</strong>�iPDF�t�@�C������j<br>
+<strong>回路図</strong>（PDFファイルあり）<br>
 <img src="./xiao_esp32s3_sense_sd_sch.png" width="860" height="560"><br>
 </p>
-<p><strong>�ڑ�</strong><br>
-�e�R���|�[�l���g�̐ڑ��͉�H�}���Q�Ƃ̂��ƁB<br>
-�v���A�b�v��R�iR3,R4�j�͔z���̒����ɒ��ӂ���Ώȗ��ł���B<br>
-XIAO ESP32S3 SENSE��GPIO�͑S�Ďg�p����Ă��āA�󂫂��Ȃ��B<br>
+<p><strong>接続</strong><br>
+各コンポーネントの接続は回路図を参照のこと。<br>
+プルアップ抵抗（R3,R4）は配線の長さに注意すれば省略可である。<br>
+XIAO ESP32S3 SENSEのGPIOは全て使用されていて、空きがない。<br>
 <p>
-<p><strong>�C���X�g�[��</strong><br>
+<p><strong>インストール</strong><br>
 <ol>
-<li>�R�[�h���AZIP�`���Ń_�E�����[�h�A�K���ȃt�H���_�ɓW�J����B</li>
-<li>ArduinoIDE�ɂ����āA���C�u�����}�l�[�W������ȉ����������ăC���X�g�[������</li>
+<li>コードを、ZIP形式でダウンロード、適当なフォルダに展開する。</li>
+<li>ArduinoIDEにおいて、ライブラリマネージャから以下を検索してインストールする</li>
  <ul>
   <li>Adafruit_BusIO</li>
   <li>Adafruit_GFX</li>
   <li>Adafruit_SSD1306</li>
   <li>RDA5807</li>
  </ul>
-<li>�ǉ��̃��C�u�������AZIP�`���Ń_�E�����[�h�A���C�u�����}�l�[�W������C���X�g�[������</li>
+<li>追加のライブラリを、ZIP形式でダウンロード、ライブラリマネージャからインストールする</li>
  <ul>
   <li>TimeLib&nbsp;:&nbsp; https://github.com/PaulStoffregen/Time</li>
-  <li>Audio�@-�@audioI2S</li>
+  <li>Audio　-　audioI2S</li>
  </ul>
-<li>ArduinoIDE����xiao_esp32_sense_rda5807_pcm5102_SD_wav_master.ino���J��</li>
-<li>�u���؁E�R���p�C���v�ɐ���������A��U�A�u���O��t���ĕۑ��v���s��</li>
-<li>���p����WiFi�̃A�N�Z�X�|�C���g�ɍ��킹�āA�X�P�b�`��ssid�Apassword��ҏW����B</li>
-<li>���[�J���̃��W�I�ǂ̎��g��"stnFreq"�Ƌǖ�"stnName"��ݒ肷��B</li>
+<li>ArduinoIDEからxiao_esp32_sense_rda5807_pcm5102_SD_wav_master.inoを開く</li>
+<li>「検証・コンパイル」に成功したら、一旦、「名前を付けて保存」を行う</li>
+<li>利用するWiFiのアクセスポイントに合わせて、スケッチのssid、passwordを編集する。</li>
+<li>ローカルのラジオ局の周波数"stnFreq"と局名"stnName"を設定する。</li>
 </ol>
 </p>
-<p><strong>�u���E�U�̉��</strong><br>
+<p><strong>ブラウザの画面</strong><br>
 </p>
 <p>
-�P�D�u���E�U����uhttp://192.168.x.y�v�ix.y�͋N�����AOLED�ɕ\���j�ɃA�N�Z�X����BDSP���W�I�̑���ƏT�ԃX�P�W���[���̐ݒ��ʂ�\������B<br>
-�uRecording_Function�v�{�^���������B<br>
+１．ブラウザから「http://192.168.x.y」（x.yは起動時、OLEDに表示）にアクセスする。DSPラジオの操作と週間スケジュールの設定画面を表示する。<br>
+「Recording_Function」ボタンを押す。<br>
 <img src="./xiao_esp32s3_sense_sd_2.png" width="660" height="360"><br>
 </p>
 <p>
-�Q�D�^���̑���Ƙ^���t�@�C���̃��X�g����эĐ��̑���B<br>
+２．録音の操作と録音ファイルのリストおよび再生の操作。<br>
 <img src="./xiao_esp32_sense_sd_rec2.png" width="660" height="360"><br>
 </p>
 <p>
-�R�D�^���J�n�i����ł́A30���Ŏ�����~�A�ύX�̓X�P�b�`�́uMAX_RECORD_TIME�v���C������j�B<br>
+３．録音開始（既定では、30分で自動停止、変更はスケッチの「MAX_RECORD_TIME」を修正する）。<br>
 <img src="./xiao_esp32s3_sense_sd_rec.png" width="660" height="360"><br>
 </p>
 <p>
-�S�D�t�@�C�������N���b�N����ƍĐ����J�n����B�Ȃ��A�Đ����́AOLED�̕\���͒�~����B<br>
+４．ファイル名をクリックすると再生を開始する。なお、再生中は、OLEDの表示は停止する。<br>
 <img src="./xiao_esp32s3_sense_play.png" width="660" height="360"><br>
 </p>
 
-<p><strong>���ӎ���</strong><br>
-�ESD�J�[�h�́A�uSD�v�A�uSDHC�v�i32GB�܂Łj�^�C�v�ɑΉ��B�t�@�C���T�C�Y��2GB�܂ŁB�N���X�^�T�C�Y32KB�Ńt�H�[�}�b�g����B<br>
-�ESD�J�[�h�ւ̏������݂ŃG���[���������邱�Ƃ�����A�ăt�H�[�}�b�g���K�v�ɂȂ�P�[�X������܂��BSD�J�[�h�͐�p�Ƃ��A<br>
-�@ <strong>�ۑ����K�v�ȃf�[�^�͌����Ēu���Ȃ��ł�������</strong>�B<br>
-�E30���̘^���ŁA�t�@�C���T�C�Y��220MB���x�ɂȂ�܂��B�t�@�C���T�C�Y��SD�J�[�h�̗e�ʂɒ��ӁB�e�ʒ��߂ŃG���[�ɂȂ��<br>
-�@ �ăt�H�[�}�b�g���K�v�ɂȂ邱�Ƃ�����܂��B<br>
-�EArduinoIDE�̃V���A�����j�^�[�Ƀg���[�X�����o�͂��Ă��܂��B<br>
-�E��ʂ�̓���͊m�F���Ă��܂����A�܂��Abug�͂���Ǝv���܂��B<br>
-�E�����ۏ؂�����̂ł͂���܂���̂ŁA���p�̍ۂ́A���ȐӔC�ł��y���݂��������B<br>
+<p><strong>注意事項</strong><br>
+・SDカードは、「SD」、「SDHC」（32GBまで）タイプに対応。ファイルサイズは2GBまで。クラスタサイズ32KBでフォーマットする。<br>
+・SDカードへの書き込みでエラーが発生することがあり、再フォーマットが必要になるケースがあります。SDカードは専用とし、<br>
+　 <strong>保存が必要なデータは決して置かないでください</strong>。<br>
+・30分の録音で、ファイルサイズが220MB程度になります。ファイルサイズとSDカードの容量に注意。容量超過でエラーになると<br>
+　 再フォーマットが必要になることがあります。<br>
+・ArduinoIDEのシリアルモニターにトレース情報を出力しています。<br>
+・一通りの動作は確認していますが、まだ、bugはあると思います。<br>
+・動作を保証するものではありませんので、利用の際は、自己責任でお楽しみください。<br>
 </p>
