@@ -34,6 +34,7 @@ DAC用のI2SのライブラリaudioI2Sは、<a href="https://github.com/schreibf
  ・I2C接続&nbsp; RDA5807FP<br>
  ・I2S接続&nbsp; PCM5102モジュール　(UDA1334でも可)<br>
  ・I2C接続&nbsp; SSD1306 64x32 OLED表示装置<br>
+ ・NJM2073　バッファアンプ<br>
  ・出力切替え&nbsp; ADG884 アナログスイッチ<br>
  ・トランジスタ S9014 (ADG884の切り替えに使用、ON時に2Vが得られる小信号用ならOK)<br>
  ・Xtal発振器（32768Hz）、コンデンサ、抵抗類、オーディオジャック、配線類<br>
